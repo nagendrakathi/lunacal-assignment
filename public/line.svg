@@ -1,0 +1,30 @@
+<svg 
+        width="612" 
+        height="4" 
+        viewBox="0 0 612 4" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full"
+      >
+        <rect 
+          width="612" 
+          height="4" 
+          rx="2" 
+          fill="url(#paint0_linear)" 
+          fillOpacity="0.5"
+        />
+        <defs>
+          <linearGradient 
+            id="paint0_linear" 
+            x1="0" 
+            y1="2" 
+            x2="612" 
+            y2="2" 
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#282828" />
+            <stop offset="0.5" stopColor="#F8F8F8" />
+            <stop offset="1" stopColor="#282828" />
+          </linearGradient>
+        </defs>
+      </svg>
