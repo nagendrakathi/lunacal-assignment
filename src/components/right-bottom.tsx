@@ -25,7 +25,7 @@ export default function RightBottom() {
             ADD IMAGE
           </button>
           <div className="ml-4 flex flex-row items-center gap-2">
-            <button className="cursor-pointer rounded-full bg-linear-to-r from-[#23262a] to-[#161718] p-3">
+            <button className="cursor-pointer rounded-full bg-linear-to-r from-[#23262a] to-[#161718] p-3 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-xl">
               <svg
                 width="17"
                 height="16"
@@ -50,7 +50,7 @@ export default function RightBottom() {
                 />
               </svg>
             </button>
-            <button className="cursor-pointer rounded-full bg-linear-to-r from-[#23262a] to-[#161718] p-3">
+            <button className="cursor-pointer rounded-full bg-linear-to-r from-[#23262a] to-[#161718] p-3 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-xl">
               <svg
                 width="17"
                 height="16"
