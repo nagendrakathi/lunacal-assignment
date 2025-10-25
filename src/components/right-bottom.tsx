@@ -1,7 +1,35 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 
 export default function RightBottom() {
+  const [images, setImages] = React.useState([
+    "/image.png",
+    "/image.png",
+    "/image.png",
+    "/image.png",
+    "/image.png",
+    "/image.png",
+  ]);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const handleAddImage = () => {
+    const newImageUrl = "/image.png";
+    setImages([...images, newImageUrl]);
+  };
+  const handlePrevious = () => {
+    if (images.length <= 3) return;
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 3 : prevIndex - 1,
+    );
+  };
+
+  const handleNext = () => {
+    if (images.length <= 3) return;
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 3 ? 0 : prevIndex + 1,
+    );
+  };
+
   return (
     <div className="relative -mt-3 h-full w-full rounded-3xl bg-[#363C43] px-10 py-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)]">
       <div className="mx-auto ml-3 flex flex-row justify-between gap-2 rounded-2xl">
@@ -9,7 +37,10 @@ export default function RightBottom() {
           Gallery
         </button>
         <div className="flex items-center justify-center">
-          <button className="shadow-[0_4px_30px_rgba(255, 255, 255, 0.1)] relative flex items-center gap-1 rounded-full bg-white/5 px-5 py-3 text-[12px] font-medium tracking-wide text-white shadow-2xl backdrop-blur-2xl">
+          <button
+            onClick={handleAddImage}
+            className=" transition-transform active:scale-95 cursor-pointer shadow-[0_4px_30px_rgba(255, 255, 255, 0.1)] relative flex items-center gap-1 rounded-full bg-white/5 px-5 py-3 text-[12px] font-medium tracking-wide text-white shadow-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] backdrop-blur-2xl"
+          >
             <svg
               width="10"
               height="10"
@@ -25,32 +56,38 @@ export default function RightBottom() {
             ADD IMAGE
           </button>
           <div className="ml-4 flex flex-row items-center gap-2">
-            <button className="cursor-pointer rounded-full bg-linear-to-r from-[#23262a] to-[#161718] p-3 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-xl">
+            <button
+              onClick={handlePrevious}
+              className="cursor-pointer rounded-full bg-linear-to-r from-[#23262a] to-[#161718] p-3 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-xl transition-transform active:scale-95"
+            >
               <svg
-                width="17"
-                height="16"
-                viewBox="0 0 17 16"
-                fill="none"
-                className="h-3 w-3"
-                xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="16"
+              viewBox="0 0 17 16"
+              fill="none"
+              className="h-3 w-3"
+              xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  d="M1 7.96422L15.1943 8.03658"
-                  stroke="#6F787C"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M7.96419 14.9998L0.999963 7.96423L8.03555 1.00001"
-                  stroke="#6F787C"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+              <path
+                d="M1 7.96422L15.1943 8.03658"
+                stroke="#6F787C"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M7.96419 14.9998L0.999963 7.96423L8.03555 1.00001"
+                stroke="#6F787C"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
               </svg>
             </button>
-            <button className="cursor-pointer rounded-full bg-linear-to-r from-[#23262a] to-[#161718] p-3 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-xl">
+            <button
+              onClick={handleNext}
+              className="cursor-pointer rounded-full bg-linear-to-r from-[#23262a] to-[#161718] p-3 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-xl transition-transform active:scale-95"
+            >
               <svg
                 width="17"
                 height="16"
@@ -78,28 +115,22 @@ export default function RightBottom() {
           </div>
         </div>
       </div>
-      <div className="mt-8 ml-3 flex flex-row gap-4">
-        <Image
-          src={"/image.png"}
-          alt="image"
-          width={100}
-          height={100}
-          className="h-full flex-1 rounded-4xl saturate-0 filter transition-all duration-500 hover:scale-110 hover:-rotate-2 hover:saturate-100"
-        />
-        <Image
-          src={"/image.png"}
-          alt="image"
-          width={100}
-          height={100}
-          className="h-full flex-1 rounded-4xl saturate-0 filter transition-all duration-500 hover:scale-110 hover:-rotate-2 hover:saturate-100"
-        />
-        <Image
-          src={"/image.png"}
-          alt="image"
-          width={100}
-          height={100}
-          className="h-full flex-1 rounded-4xl saturate-0 filter transition-all duration-500 hover:scale-110 hover:-rotate-2 hover:saturate-100"
-        />
+      <div className="mt-8 ml-3 overflow-hidden px-2 py-6">
+        <div
+          className="flex flex-row gap-7 overflow-visible transition-transform duration-300 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
+        >
+          {images.map((img, index) => (
+            <Image
+              key={index}
+              src={img}
+              alt={`image-${index}`}
+              width={100}
+              height={100}
+              className="h-full min-w-[calc(33.33%-1.5rem)] rounded-4xl saturate-0 filter transition-all duration-500 hover:scale-110 hover:-rotate-2 hover:saturate-100"
+            />
+          ))}
+        </div>
       </div>
       <svg
         width="24"

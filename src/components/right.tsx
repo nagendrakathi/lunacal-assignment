@@ -4,7 +4,7 @@ import RightBottom from "./right-bottom";
 
 export default function Right() {
   return (
-    <div className="relative flex h-full w-full flex-col gap-5 lg:w-1/2 ">
+    <div className="relative flex h-full w-full flex-col gap-4 lg:w-1/2 ">
       <RightTop />
       <svg
         className="mx-auto h-10 w-10/12"
@@ -89,7 +89,7 @@ export default function Right() {
 
       <RightBottom />
       <svg
-        className="absolute mx-auto h-4 w-10/12 -bottom-8 ml-15"
+        className="absolute mx-auto h-4 w-10/12 -bottom-7 ml-15"
         viewBox="0 0 620 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
